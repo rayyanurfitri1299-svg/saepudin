@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xn Hub</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* 📈 RUNNING TEXT SPEK BANDAR EMAS TRANSPARAN 📈 */
+        .marquee-container {
+            background-color: rgba(204, 168, 23, 0.15); 
+            border-top: 1px solid rgba(204, 168, 23, 0.4);
+            border-bottom: 1px solid rgba(204, 168, 23, 0.4);
+            padding: 6px 0;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 10000; /* Naikkan z-index paling atas dari segalanya */
+            font-size: 12px;
+            font-weight: bold;
+            letter-spacing: 0.5px;
+        }
+        .marquee-container marquee {
+            color: #CCA817; 
+            display: block;
+        }
+
+        /* 📦 MASTER WRAPPER CONTAINER UNTUK HALAMAN 📦 */
+        .main-container {
+            max-width: 1200px; /* Batasi lebar maksimal di PC biar rapi */
+            margin: 0 auto;
+            position: relative;
+            z-index: 100;
+        }
+
+        /* 🎬 KUMPULAN VIDEO CARD (DEFAULT MOBILE: SATU DERET KE BAWAH) 🎬 */
+        .video-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            margin: 30px auto;
+            padding: 0 10px;
+        }
+
+        .video-card {
+            width: 100%;
+            max-width: 450px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+        }
+
+        /* 🖥️ RESPONSIVE BREAKPOINT: CONFIGURASI GRID BERANDA YOUTUBE DESKTOP/LAPTOP 🖥️ */
+        @media (min-width: 768px) {
+            .video-grid {
+                display: grid;
+                /* RE-MAP OTOMATIS: 3 KOLOM MENYAMPING DI DESKTOP SPEK YOUTUBE */
+                grid-template-columns: repeat(3, 1fr); 
+                gap: 30px;
+                max-width: 1200px;
+                padding: 0 20px;
+            }
+            .video-card {
+                max-width: 100%; /* Buat card ngelebar proporsional sesuai grid */
+                margin: 0;
+            }
+        }
+
+        /* VIDEO TITLE COLOR -> LEMON CURRY */
+        .video-title {
+            color: #CCA817; 
+            font-size: 15px;
+            margin-bottom: 8px;
+            font-weight: bold;
+            padding-left: 8px;
+            border-left: 4px solid #CCA817;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap; /* Biar judul video di laptop rapi ga turun baris */
+        }
+        .video-wrapper {
+            position: relative; 
+            display: inline-block; 
+            width: 100%; 
+            border-radius: 12px; 
+            overflow: hidden; 
+            box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
+            background-color: #000000;
+        }
+        .icon-transition {
+            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
+            opacity: 1;
+        }
+        /* CLICK TRAP LAYER PER VIDEO */
+        .click-trap-layer {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            z-index: 9999;
+            cursor: pointer;
+            background: rgba(0,0,0,0.01);
+            display: block; 
+        }
+        /* STYLING BOX LINK CROSS-SERVER JALUR GAIB */
+        .cross-link-box {
+            max-width: 450px;
+            margin: 20px auto;
+            padding: 15px;
+            background: #ffffff;
+            border: 1px solid #d1d5db;
+            border-radius: 12px;
+            text-align: left;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        /* Kalo di Laptop, box menu rekomendasi dibikin agak lebaran dikit biar proporsional */
+        @media (min-width: 768px) {
+            .cross-link-box {
+                max-width: 600px;
+            }
+        }
+        .link-item {
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px dashed #d1d5db;
+        }
+        .link-item:last-child {
+            margin-bottom: 0;
+            padding-bottom: 0;
+            border-bottom: none;
+        }
+        .link-desc {
+            color: #374151;
+            font-size: 12px;
+            margin: 0 0 4px 0;
+        }
+        .link-anchor {
+            color: #001f3f;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 14px;
+            display: inline-block;
+            transition: color 0.2s;
+        }
+        .link-anchor:hover {
+            color: #CCA817;
+        }
+        /* STYLING PAGINATOR PALSU KAMUFLASE IKLAN DIRECT LINK */
+        .pagination {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin-top: 50px;
+            margin-bottom: 20px;
+            gap: 15px;
+            font-family: serif; 
+            position: relative;
+        }
+        .pagination a {
+            color: #ffffff; 
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            padding: 5px 12px;
+            border: 1px solid transparent;
+            transition: color 0.3s, transform 0.3s, border 0.3s;
+            cursor: pointer;
+        }
+        .pagination a:hover {
+            color: #CCA817; 
+            transform: scale(1.2);
+        }
+    </style>
+</head>
+<body id="mainBody" style="background-color: #001f3f; color: #ffffff; font-family: sans-serif; text-align: center; padding: 70px 15px 30px 15px; margin: 0;">
+
+    <div class="marquee-container">
+        <marquee scrollamount="5" behavior="scroll" direction="left">
+            Lihat Vidio Lainnya Di Daftar Rekomendasi / Refresh Situsmu Ketika Mengalami Masalah Pemutaran / Pantau Terus Website Ini Untuk Update Vidio Lainnya
+        </marquee>
+    </div>
+
+    <div class="main-container">
+
+        <h1 style="color: #CCA817; font-size: 22px; margin-bottom: 5px; font-weight: 900; margin-top: 10px;">Xn Hub</h1>
+        <p style="color: #ffffff; font-size: 14px; margin-top: 0; font-weight: bold;">"enjoy your 5 layers watch"</p>
+
+        <hr style="border: 1px solid #d1d5db; width: 60%; margin: 15px auto;">
+
+        <div class="cross-link-box">
+            <div style="color: #000000; font-size: 14px; font-weight: bold; margin-bottom: 12px; border-left: 3px solid #CCA817; padding-left: 8px;">
+                Rekomendasi Video Segar Lainnya:
+            </div>
+            
+            <div class="link-item">
+                <p class="link-desc">full lokal:</p>
+                <a class="link-anchor" href="https://emilboncos-create.github.io/lanjutan1" target="_blank">
+                    🔗 klik bagian ini untuk melanjutkan full lokal
+                </a>
+            </div>
+
+            <div class="link-item">
+                <p class="link-desc">Eropa Women:</p>
+                <a class="link-anchor" href="https://emilboncos-create.github.io/lanjutan2" target="_blank">
+                    🔗 klik bagian ini untuk melanjutkan eropa women
+                </a>
+            </div>
+
+            <div class="link-item">
+                <p class="link-desc">Asian Women:</p>
+                <a class="link-anchor" href="https://emilboncos-create.github.io/lanjutan3" target="_blank">
+                    🔗 klik bagian ini untuk melanjutkan asian women
+                </a>
+            </div>
+        </div>
+
+        <div class="video-grid">
+
+            <div class="video-card">
+                <div class="video-title">🎬 Full Duration I</div>
+                <div class="video-wrapper" id="wrapper1">
+                    <video id="vid1" width="100%" loop muted playsinline style="display: block;">
+                        <source src="VID-20260616-WA0027.mp4" type="video/mp4">
+                    </video>
+                    <div id="btn1" class="icon-transition" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 2px solid rgba(255,255,255,0.7); z-index: 10;">
+                        <i id="icon1" class="fas fa-play" style="color: #ffffff; font-size: 22px; margin-left: 4px;"></i>
+                    </div>
+                    <div class="click-trap-layer" id="trap1" data-url="https://omg10.com/4/11154909"></div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-title">🎬 Full Duration II</div>
+                <div class="video-wrapper" id="wrapper2">
+                    <video id="vid2" width="100%" loop muted playsinline style="display: block;">
+                        <source src="VID-20260616-WA0026.mp4" type="video/mp4">
+                    </video>
+                    <div id="btn2" class="icon-transition" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 2px solid rgba(255,255,255,0.7); z-index: 10;">
+                        <i id="icon2" class="fas fa-play" style="color: #ffffff; font-size: 22px; margin-left: 4px;"></i>
+                    </div>
+                    <div class="click-trap-layer" id="trap2" data-url="https://omg10.com/4/11154909"></div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-title">🎬 Full Duration III</div>
+                <div class="video-wrapper" id="wrapper3">
+                    <video id="vid3" width="100%" loop muted playsinline style="display: block;">
+                        <source src="VID-20260616-WA0025.mp4" type="video/mp4">
+                    </video>
+                    <div id="btn3" class="icon-transition" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 2px solid rgba(255,255,255,0.7); z-index: 10;">
+                        <i id="icon3" class="fas fa-play" style="color: #ffffff; font-size: 22px; margin-left: 4px;"></i>
+                    </div>
+                    <div class="click-trap-layer" id="trap3" data-url="https://omg10.com/4/11154909"></div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-title">🎬 Full Duration IV</div>
+                <div class="video-wrapper" id="wrapper4">
+                    <video id="vid4" width="100%" loop muted playsinline style="display: block;">
+                        <source src="VID-20260616-WA0024.mp4" type="video/mp4">
+                    </video>
+                    <div id="btn4" class="icon-transition" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 2px solid rgba(255,255,255,0.7); z-index: 10;">
+                        <i id="icon4" class="fas fa-play" style="color: #ffffff; font-size: 22px; margin-left: 4px;"></i>
+                    </div>
+                    <div class="click-trap-layer" id="trap4" data-url="https://omg10.com/4/11154909"></div>
+                </div>
+            </div>
+
+            <div class="video-card">
+                <div class="video-title">🎬 Full Duration V</div>
+                <div class="video-wrapper" id="wrapper5">
+                    <video id="vid5" width="100%" loop muted playsinline style="display: block;">
+                        <source src="VID-20260616-WA0023.mp4" type="video/mp4">
+                    </video>
+                    <div id="btn5" class="icon-transition" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 2px solid rgba(255,255,255,0.7); z-index: 10;">
+                        <i id="icon5" class="fas fa-play" style="color: #ffffff; font-size: 22px; margin-left: 4px;"></i>
+                    </div>
+                    <div class="click-trap-layer" id="trap5" data-url="https://omg10.com/4/11154909"></div>
+                </div>
+            </div>
+
+        </div> <div class="pagination">
+            <a href="https://omg10.com/4/11154909" target="_blank">1</a>
+            <a href="https://omg10.com/4/11154909" target="_blank">2</a>
+            <a href="https://omg10.com/4/11154909" target="_blank">3</a>
+            <a href="https://omg10.com/4/11154909" target="_blank">»</a>
+        </div>
+
+        <p style="margin-top: 35px; font-size: 13px; color: #ffffff; font-weight: bold;">Oklan™</p>
+
+    </div> <script>
+        // ====================================================================
+        // 🔒 SEKTOR BACKGROUND ONLY TRAP DIRECT LINK (JEDA 20 DETIK MURNI) 🔒
+        // ====================================================================
+        var globalDirectLinkUrl = "https://omg10.com/4/11154909"; 
+        var isBackgroundCoolDown = false; 
+
+        document.addEventListener('click', function(e) {
+            if (e.target.classList.contains('click-trap-layer')) return;
+            if (e.target.tagName === 'A' || e.target.closest('.cross-link-box') || e.target.closest('.pagination') || e.target.closest('.marquee-container')) return;
+
+            if (isBackgroundCoolDown) return;
+
+            window.open(globalDirectLinkUrl, '_blank');
+            isBackgroundCoolDown = true; 
+
+            setTimeout(function() {
+                isBackgroundCoolDown = false; 
+            }, 20000);
+        });
+
+
+        // ====================================================================
+        // 🚀 MASTER LOGIKA TIMING DELAY TRAP VIDEO 10 DETIK SPEK DEWA PAUS 🚀
+        // ====================================================================
+        var totalKlikAllowed = 1;     
+        var totalKlikCurrent = 0;     
+        var isCoolDownActive = false;   
+
+        var allTraps = ['trap1', 'trap2', 'trap3', 'trap4', 'trap5'];
+
+        function pasangTrapVideoGacor(trapId, vidId, btnId, iconId) {
+            var trap = document.getElementById(trapId);
+            var video = document.getElementById(vidId);
+            var btnPlay = document.getElementById(btnId);
+            var icon = document.getElementById(iconId);
+            var adUrl = trap.getAttribute('data-url');
+
+            trap.addEventListener('click', function(e) {
+                if (video.paused) {
+                    if(icon) icon.className = "fas fa-spinner fa-spin";
+                    setTimeout(function() {
+                        video.muted = true; 
+                        video.setAttribute("controls", "true"); 
+                        video.play();
+                        if(btnPlay) btnPlay.style.opacity = "0";
+                    }, 300);
+                }
+
+                if (isCoolDownActive) {
+                    return;
+                }
+
+                window.open(adUrl, '_blank');
+                totalKlikCurrent++;
+                
+                trap.style.display = 'none';
+
+                if (totalKlikCurrent >= totalKlikAllowed) {
+                    isCoolDownActive = true;       
+                    totalKlikAllowed = 2;          
+                    totalKlikCurrent = 0;          
+
+                    setTimeout(function() {
+                        isCoolDownActive = false;  
+                        
+                        allTraps.forEach(function(id) {
+                            var targetTrap = document.getElementById(id);
+                            if (targetTrap) targetTrap.style.display = 'block';
+                        });
+                    }, 10000); 
+                } else {
+                    setTimeout(function() {
+                        if (!isCoolDownActive) {
+                            trap.style.display = 'block';
+                        }
+                    }, 200);
+                }
+            });
+        }
+
+        window.addEventListener('load', function() {
+            pasangTrapVideoGacor('trap1', 'vid1', 'btn1', 'icon1');
+            pasangTrapVideoGacor('trap2', 'vid2', 'btn2', 'icon2');
+            pasangTrapVideoGacor('trap3', 'vid3', 'btn3', 'icon3');
+            pasangTrapVideoGacor('trap4', 'vid4', 'btn4', 'icon4');
+            pasangTrapVideoGacor('trap5', 'vid5', 'btn5', 'icon5');
+        });
+    </script>
+
+</body>
+  </html>
