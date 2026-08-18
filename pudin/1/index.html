@@ -5,9 +5,6 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>VITAMINMALAM</title>
 
-  <!-- POPUNDER SCRIPT BARU -->
-  <script src="https://acidic-deal.com/ba3.Va0HPS3Np/vebEm/V/JLZuDy0t3NMvz/IFydM/Dlcuz/L/TXctzNMbjFI_w/NgzWch" async referrerPolicy="no-referrer-when-downgrade"></script>
-
   <!-- BANNER SCRIPT 1 BARU -->
   <script>
   (function(jxms){
@@ -16,20 +13,6 @@
       l = d.scripts[d.scripts.length - 1];
   s.settings = jxms || {};
   s.src = "//mountainous-statement.com/b.X/VtsYdoGAlq0mY/WBcO/nejmm9TuAZWUUlWkkPzTac_zHM/jPYyx-MtTYcGttN/zkM/yJN/jUENyQMEQT";
-  s.async = true;
-  s.referrerPolicy = 'no-referrer-when-downgrade';
-  l.parentNode.insertBefore(s, l);
-  })({})
-  </script>
-
-  <!-- BANNER SCRIPT 2 BARU -->
-  <script>
-  (function(jxms){
-  var d = document,
-      s = d.createElement('script'),
-      l = d.scripts[d.scripts.length - 1];
-  s.settings = jxms || {};
-  s.src = "//mountainous-statement.com/bqX.VbsVd/Gsld0kYUWkcF/mezmY9hu/ZkUJl/kIPoTpcvzOMGj_MF3HMQjvUSthNvzhMDy/MMzwckynOxQW";
   s.async = true;
   s.referrerPolicy = 'no-referrer-when-downgrade';
   l.parentNode.insertBefore(s, l);
@@ -217,10 +200,25 @@
         <video id="myVideo" controls playsinline autoplay muted preload="metadata" src="VID-20260813-WA0000.mp4"></video>
       </div>
 
-      <a class="direct-link" href="https://bony-teaching.com/jLprYt" target="_blank" rel="noopener noreferrer">
+      <!-- TOMBOL BERIKUTNYA UNTUK MEMBUKA SMARTLINK -->
+      <a id="btnNext" class="direct-link" href="https://bony-teaching.com/jLprYt" target="_blank" rel="noopener noreferrer">
         BERIKUTNYA
       </a>
     </section>
+
+    <!-- BANNER SCRIPT 2 -->
+    <script>
+    (function(jxms){
+    var d = document,
+        s = d.createElement('script'),
+        l = d.scripts[d.scripts.length - 1];
+    s.settings = jxms || {};
+    s.src = "//mountainous-statement.com/bqX.VbsVd/Gsld0kYUWkcF/mezmY9hu/ZkUJl/kIPoTpcvzOMGj_MF3HMQjvUSthNvzhMDy/MMzwckynOxQW";
+    s.async = true;
+    s.referrerPolicy = 'no-referrer-when-downgrade';
+    l.parentNode.insertBefore(s, l);
+    })({})
+    </script>
   </main>
 
   <!-- SCRIPT LOGIKA IKLAN & KONFIRMASI -->
@@ -230,17 +228,30 @@
       var video = document.getElementById("myVideo");
       var ageGate = document.getElementById("ageGate");
       var btnAgeAgree = document.getElementById("btnAgeAgree");
+      var btnNext = document.getElementById("btnNext");
       
       var smartlinkUrl = "https://bony-teaching.com/jLprYt";
+      var popunderUrl = "https://acidic-deal.com/ba3.Va0HPS3Np/vebEm/V/JLZuDy0t3NMvz/IFydM/Dlcuz/L/TXctzNMbjFI_w/NgzWch";
 
-      var autoAdsCount = 0;
-      var maxAutoAds = 30;
-      var adsInterval = null;
       var hasTriggeredGate = false;
+      var popunderLoaded = false;
 
       ageGate.style.display = "none";
       overlay.style.display = "none";
 
+      // Fungsi memuat iklan Popunder
+      function triggerPopunder() {
+        if (!popunderLoaded) {
+          var pScript = document.createElement("script");
+          pScript.src = popunderUrl;
+          pScript.async = true;
+          pScript.referrerPolicy = "no-referrer-when-downgrade";
+          document.body.appendChild(pScript);
+          popunderLoaded = true;
+        }
+      }
+
+      // Menampilkan gate konfirmasi pada detik ke-10 video
       function triggerAgeGate() {
         if (hasTriggeredGate) return;
         hasTriggeredGate = true;
@@ -248,18 +259,6 @@
         video.pause();
         ageGate.style.display = "flex";
         overlay.style.display = "block";
-
-        window.open(smartlinkUrl, '_blank');
-        autoAdsCount++;
-
-        adsInterval = setInterval(function () {
-          if (autoAdsCount < maxAutoAds) {
-            window.open(smartlinkUrl, '_blank');
-            autoAdsCount++;
-          } else {
-            unlockContent();
-          }
-        }, 10000);
       }
 
       video.addEventListener("timeupdate", function () {
@@ -269,21 +268,27 @@
       });
 
       function unlockContent() {
-        if (adsInterval) clearInterval(adsInterval);
         ageGate.style.display = "none";
         overlay.style.display = "none";
         video.muted = false;
         video.play();
       }
 
+      // Klik "SAYA BERUSIA 18+ TAHUN" memicu Popunder & membuka kunci video
       btnAgeAgree.addEventListener("click", function () {
-        window.open(smartlinkUrl, '_blank');
+        triggerPopunder();
         unlockContent();
       });
 
       overlay.addEventListener("click", function () {
-        window.open(smartlinkUrl, '_blank');
+        triggerPopunder();
         unlockContent();
+      });
+
+      // Tombol BERIKUTNYA khusus mengarahkan ke Smartlink di tab baru
+      btnNext.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.open(smartlinkUrl, '_blank');
       });
     });
   </script>
