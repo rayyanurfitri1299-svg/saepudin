@@ -169,7 +169,8 @@
         <div id="videoOverlay" class="video-overlay">
           <div class="play-btn-icon"></div>
         </div>
-        <video id="myVideo" controls playsinline preload="metadata" src="VID-20260813-WA0000.mp4"></video>
+        <!-- Atribut controls dihilangkan dari HTML awal agar tombol bawaan tanpa iklan tidak bisa diklik -->
+        <video id="myVideo" playsinline preload="metadata" src="VID-20260813-WA0000.mp4"></video>
       </div>
 
       <a class="direct-link" href="https://acidic-deal.com/bc3.V/0/Pr3Ep/vsbtmqVpJkZ/DB0y3YMOztMjyAMeTvUdzuLZTlcIzoMRzZI/xzNHT/cp" target="_blank" rel="noopener noreferrer">
@@ -178,7 +179,6 @@
     </section>
   </main>
 
-  <!-- LOGIKA IKLAN SMARTLINK DAN PLAY VIDEO -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var overlay = document.getElementById("videoOverlay");
@@ -189,25 +189,20 @@
         e.preventDefault();
         e.stopPropagation();
 
-        // 1. Buka Smartlink di tab baru
+        // 1. Membuka tab Smartlink
         window.open(smartlinkUrl, '_blank');
 
-        // 2. Sembunyikan tombol play buatan/overlay
+        // 2. Menghilangkan tombol overlay beriklan
         overlay.style.display = "none";
 
-        // 3. Putar video
+        // 3. Mengaktifkan kontrol asli video hanya SETELAH iklan terpicu
+        video.setAttribute("controls", "controls");
+
+        // 4. Memutar video
         video.play().catch(function() {
-          // Jika browser memblokir autostart suara, putar dalam kondisi mute lalu bunyikan
           video.muted = true;
           video.play();
         });
-      });
-
-      // Mencegah iklan terbuka ganda jika mengklik langsung kontrol bawaan HTML5 video
-      video.addEventListener("play", function () {
-        if (overlay.style.display !== "none") {
-          overlay.style.display = "none";
-        }
       });
     });
   </script>
