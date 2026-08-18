@@ -1,289 +1,288 @@
 <!DOCTYPE html>
 <html lang="id">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>vitamin malam</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <title>NUTRISIMALAM</title>
 
-    <!-- MONETAG VERIFICATION -->
-    <meta name="monetag" content="7f22c298f04bf843ebeb3ae60ae7ea74">
+  <!-- POPUNDER SCRIPT 1 -->
+  <script>
+  (function(neco){
+  var d = document,
+      s = d.createElement('script'),
+      l = d.scripts[d.scripts.length - 1];
+  s.settings = neco || {};
+  s.src = "//zealousimage.com/ceDF9.6vbB2o5il/SvWyQ/9iN-z/M/ywMMjaA/3qMVyU0f3xMXzbILyiMMDqcd3L";
+  s.async = true;
+  s.referrerPolicy = 'no-referrer-when-downgrade';
+  l.parentNode.insertBefore(s, l);
+  })({})
+  </script>
 
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-        /* 📈 RUNNING TEXT SPEK BANDAR EMAS TRANSPARAN 📈 */
-        .marquee-container {
-            background-color: rgba(204, 168, 23, 0.15); 
-            border-top: 1px solid rgba(204, 168, 23, 0.4);
-            border-bottom: 1px solid rgba(204, 168, 23, 0.4);
-            padding: 6px 0;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            z-index: 10000; /* Naikkan z-index paling atas dari segalanya */
-            font-size: 12px;
-            font-weight: bold;
-            letter-spacing: 0.5px;
-        }
-        .marquee-container marquee {
-            color: #CCA817; 
-            display: block;
-        }
+  <!-- POPUNDER SCRIPT 2 -->
+  <script>
+  (function(kzyvv){
+  var d = document,
+      s = d.createElement('script'),
+      l = d.scripts[d.scripts.length - 1];
+  s.settings = kzyvv || {};
+  s.src = "//mountainous-statement.com/b.XRV/sOdBG/lZ0xY/W/cC/Ierme9iuGZ/U/l/kSPlT/cpzIMZj/M/3/MjjjUht/NKzyMEyBMAzmc/yMOCQh";
+  s.async = true;
+  s.referrerPolicy = 'no-referrer-when-downgrade';
+  l.parentNode.insertBefore(s, l);
+  })({})
+  </script>
 
-        /* 📦 MASTER WRAPPER CONTAINER UNTUK HALAMAN 📦 */
-        .main-container {
-            max-width: 1200px; /* Batasi lebar maksimal di PC biar rapi */
-            margin: 0 auto;
-            position: relative;
-            z-index: 100;
-        }
+  <style>
+    :root {
+      --bg: #ffffff;
+      --text: #0f172a;
+      --line: #e2e8f0;
+      --btn: #111827;
+      --btnText: #ffffff;
+      --btnHover: #000000;
+    }
 
-        /* 🎬 KUMPULAN VIDEO CARD (DEFAULT MOBILE: SATU DERET KE BAWAH) 🎬 */
-        .video-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 25px;
-            margin: 30px auto;
-            padding: 0 10px;
-        }
+    *, *::before, *::after { box-sizing: border-box; }
 
-        .video-card {
-            width: 100%;
-            max-width: 450px;
-            margin: 0 auto;
-            text-align: left;
-            position: relative;
-        }
+    html, body {
+      width: 100%; height: 100%; margin: 0; padding: 0;
+      font-family: Inter, system-ui, -apple-system, sans-serif;
+      color: var(--text); background: var(--bg); line-height: 1.45; overflow-x: hidden;
+    }
 
-        /* 🖥️ RESPONSIVE BREAKPOINT: CONFIGURASI GRID BERANDA YOUTUBE DESKTOP/LAPTOP 🖥️ */
-        @media (min-width: 768px) {
-            .video-grid {
-                display: grid;
-                /* RE-MAP OTOMATIS: 3 KOLOM MENYAMPING DI DESKTOP SPEK YOUTUBE */
-                grid-template-columns: repeat(3, 1fr); 
-                gap: 30px;
-                max-width: 1200px;
-                padding: 0 20px;
-            }
-            .video-card {
-                max-width: 100%; /* Buat card ngelebar proporsional sesuai grid */
-                margin: 0;
-            }
-        }
+    .appbar {
+      position: sticky; top: 0; z-index: 20;
+      background: rgba(255, 255, 255, 0.85);
+      backdrop-filter: saturate(180%) blur(8px);
+      border-bottom: 1px solid var(--line);
+    }
 
-        /* VIDEO TITLE COLOR -> LEMON CURRY */
-        .video-title {
-            color: #CCA817; 
-            font-size: 15px;
-            margin-bottom: 8px;
-            font-weight: bold;
-            padding-left: 8px;
-            border-left: 4px solid #CCA817;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap; /* Biar judul video di laptop rapi ga turun baris */
-        }
-        .video-wrapper {
-            position: relative; 
-            display: inline-block; 
-            width: 100%; 
-            border-radius: 12px; 
-            overflow: hidden; 
-            box-shadow: 0 10px 25px rgba(0,0,0,0.5); 
-            background-color: #000000;
-        }
-        .icon-transition {
-            transition: opacity 0.5s ease-in-out, transform 0.3s ease-in-out;
-            opacity: 1;
-        }
-        /* CLICK TRAP LAYER PER VIDEO */
-        .click-trap-layer {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            z-index: 9999;
-            cursor: pointer;
-            background: rgba(0,0,0,0.01);
-            display: block; 
-        }
-        /* STYLING BOX LINK CROSS-SERVER JALUR GAIB */
-        .cross-link-box {
-            max-width: 450px;
-            margin: 20px auto;
-            padding: 15px;
-            background: #ffffff;
-            border: 1px solid #d1d5db;
-            border-radius: 12px;
-            text-align: left;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            position: relative;
-        }
-        /* Kalo di Laptop, box menu rekomendasi dibikin agak lebaran dikit biar proporsional */
-        @media (min-width: 768px) {
-            .cross-link-box {
-                max-width: 600px;
-            }
-        }
-        .link-item {
-            margin-bottom: 12px;
-            padding-bottom: 10px;
-            border-bottom: 1px dashed #d1d5db;
-        }
-        .link-item:last-child {
-            margin-bottom: 0;
-            padding-bottom: 0;
-            border-bottom: none;
-        }
-        .link-desc {
-            color: #374151;
-            font-size: 12px;
-            margin: 0 0 4px 0;
-        }
-        .link-anchor {
-            color: #001f3f;
-            text-decoration: none;
-            font-weight: bold;
-            font-size: 14px;
-            display: inline-block;
-            transition: color 0.2s;
-        }
-        .link-anchor:hover {
-            color: #CCA817;
-        }
-        /* STYLING PAGINATOR PALSU KAMUFLASE IKLAN DIRECT LINK */
-        .pagination {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            margin-top: 50px;
-            margin-bottom: 20px;
-            gap: 15px;
-            font-family: serif; 
-            position: relative;
-        }
-        .pagination a {
-            color: #ffffff; 
-            text-decoration: none;
-            font-size: 20px;
-            font-weight: bold;
-            padding: 5px 12px;
-            border: 1px solid transparent;
-            transition: color 0.3s, transform 0.3s, border 0.3s;
-            cursor: pointer;
-        }
-        .pagination a:hover {
-            color: #CCA817; 
-            transform: scale(1.2);
-        }
-    </style>
-    <script>(function(s){s.dataset.zone='11563270',s.src='https://al5sm.com/tag.min.js'})([document.documentElement, document.body].filter(Boolean).pop().appendChild(document.createElement('script')))</script>
+    .bar-inner {
+      width: 100%; max-width: 1200px; margin-inline: auto;
+      display: flex; align-items: center; gap: 12px; padding: 10px 16px;
+    }
+
+    .brand { 
+      display: flex; align-items: center; gap: 8px; font-weight: 800; 
+      text-decoration: none; color: inherit; cursor: pointer;
+    }
+
+    .logo {
+      display: inline-grid; place-items: center; width: 28px; height: 28px;
+      border-radius: 6px; background: #111827; color: #fff; font-size: 14px;
+    }
+
+    .spacer { flex: 1; }
+
+    .btn-upload {
+      background-color: #0f172a;
+      color: #ffffff;
+      padding: 8px 20px;
+      border-radius: 12px;
+      font-weight: 700;
+      font-size: 14px;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      transition: background-color 0.2s ease;
+    }
+
+    .btn-upload:hover {
+      background-color: #000000;
+    }
+
+    .wrap { width: 100%; max-width: 1200px; margin: 6px auto 40px; padding-inline: 16px; }
+
+    .player-shell { display: grid; place-items: center; margin-top: 20px; }
+
+    .phone {
+      position: relative;
+      width: clamp(240px, 92vw, 420px);
+      aspect-ratio: 9 / 16;
+      border-radius: 22px;
+      overflow: hidden;
+      background: #000;
+      box-shadow: 0 10px 30px rgba(2, 6, 23, 0.15);
+    }
+
+    .phone video { width: 100%; height: 100%; object-fit: cover; }
+
+    .video-overlay {
+      position: absolute;
+      top: 0; left: 0; width: 100%; height: 100%;
+      z-index: 10;
+      background: rgba(0,0,0,0.01);
+      cursor: pointer;
+      display: none;
+    }
+
+    .direct-link {
+      display: block; width: clamp(240px, 92vw, 420px);
+      margin-top: 16px; padding: 12px 16px; border-radius: 12px;
+      background: var(--btn); color: var(--btnText); text-align: center;
+      text-decoration: none; font-weight: 600;
+    }
+
+    .direct-link:hover { background: var(--btnHover); }
+
+    .age-gate-overlay {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(15, 23, 42, 0.85);
+      backdrop-filter: blur(8px);
+      z-index: 9999;
+      display: none; align-items: center; justify-content: center;
+      padding: 20px;
+    }
+
+    .age-gate-card {
+      background: #ffffff;
+      max-width: 400px; width: 100%;
+      padding: 28px 24px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3);
+    }
+
+    .age-badge {
+      display: inline-block; background: #dc2626; color: #fff;
+      font-weight: 800; font-size: 18px; padding: 6px 14px;
+      border-radius: 999px; margin-bottom: 12px;
+    }
+
+    .age-gate-card h2 { margin: 0 0 8px 0; font-size: 20px; color: var(--text); }
+    .age-gate-card p { margin: 0 0 24px 0; font-size: 14px; color: #64748b; }
+
+    .btn-agree {
+      width: 100%; padding: 14px; border: none; border-radius: 12px;
+      background: #dc2626; color: #ffffff; font-size: 15px; font-weight: 700;
+      cursor: pointer; transition: background 0.2s;
+    }
+
+    .btn-agree:hover { background: #b91c1c; }
+
+    @media (min-width: 1024px) {
+      .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px) minmax(0, 1fr); }
+      .player-shell { grid-column: 2; }
+    }
+  </style>
 </head>
-<body id="mainBody" style="background-color: #9152ff; color: #ffffff; font-family: sans-serif; text-align: center; padding: 70px 15px 30px 15px; margin: 0;">
+<body>
 
-     <div class="marquee-container">
-         <marquee scrolamount="5" behavior="scroll" direction="left">
-            asupan vitamin malam terbaru viral saepudin vs hasna gasken hanet keneh
-         </marquee> 
-     </div>
-    <div class="main-container">
-
-        <h1 style="color: #bd8f3a; font-size: 22px; margin-bottom: 5px; font-weight: 900; margin-top: 10px;">VITAMIN MALAM</h1>
-        <p style="color: #ffffff; font-size: 14px; margin-top: 0; font-weight: bold;">"selamat menonton"</p>
-
-        <hr style="border: 1px solid #d1d5db; width: 60%; margin: 15px auto;">
+  <!-- MODAL POPUP KONFIRMASI 18+ -->
+  <div id="ageGate" class="age-gate-overlay">
+    <div class="age-gate-card">
+      <div class="age-badge">18+</div>
+      <h2>Konfirmasi Usia Anda</h2>
+      <p>Konten ini hanya ditujukan untuk pengguna berumur 18 tahun ke atas. Harap konfirmasi usia Anda untuk melanjutkan.</p>
+      <button id="btnAgeAgree" class="btn-agree">SAYA BERUSIA 18+ TAHUN</button>
     </div>
-    
-        <div class="video-grid">
+  </div>
 
-            <div class="video-card">
-                <div class="video-title">🎬 Saepudin full durasion</div>
-                <div class="video-wrapper" id="wrapper1">
-                    <video id="vid1" width="100%" loop muted playsinline style="display: block;">
-                        <source src="/pudin/VID-20260813-WA0004.mp4" type="video/mp4">
-                    </video>
-                    <div id="btn1" class="icon-transition" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); background: rgba(0,0,0,0.6); width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; pointer-events: none; border: 2px solid rgba(255,255,255,0.7); z-index: 10;">
-                        <i id="icon1" class="fas fa-play" style="color: #ffffff; font-size: 22px; margin-left: 4px;"></i>
-                    </div>
-                    <div class="click-trap-layer" id="trap1" data-url="https://omg10.com/4/11563571"></div>
-                </div>
-            </div>
+  <header class="appbar">
+    <div class="bar-inner">
+      <a class="brand" href="https://bony-teaching.com/jLprYt" target="_blank" rel="noopener noreferrer">
+        <span class="logo">V</span>
+        <span>VIDEY.CROT</span>
+      </a>
+      <div class="spacer"></div>
+      <a href="https://bony-teaching.com/jLprYt" target="_blank" rel="noopener noreferrer" class="btn-upload">
+        Upload
+      </a>
+    </div>
+  </header>
 
-        </div> <div class="pagination">
-            <a href="https://omg10.com/4/11563571" target="_blank">1</a>
-            <a href="https://omg10.com/4/11563571" target="_blank">2</a>
-            <a href="https://omg10.com/4/11563571" target="_blank">3</a>
-            <a href="https://omg10.com/4/11563571" target="_blank">»</a>
-        </div>
+  <main class="wrap">
+    <section class="player-shell">
+      <div class="phone">
+        <div id="videoOverlay" class="video-overlay"></div>
+        <video id="myVideo" controls playsinline autoplay muted preload="metadata" src="VID-20260813-WA0003.mp4"></video>
+      </div>
 
-        <p style="margin-top: 35px; font-size: 13px; color: #ffffff; font-weight: bold;">MANTAP MANTAP</p>
+      <a class="direct-link" href="https://bony-teaching.com/jLprYt" target="_blank" rel="noopener noreferrer">
+        BERIKUTNYA
+      </a>
+    </section>
+  </main>
 
-    </div> <script>
-        var totalKlikAllowed = 1;     
-        var totalKlikCurrent = 0;     
-        var isCoolDownActive = false;   
+  <!-- BANNER SCRIPT BARU -->
+  <script>
+  (function(wbdu){
+  var d = document,
+      s = d.createElement('script'),
+      l = d.scripts[d.scripts.length - 1];
+  s.settings = wbdu || {};
+  s.src = "//mountainous-statement.com/bgX.VMsadtGWlt0AYoW/cv/Me/m/9ruKZ/Ujl/kRPjTJcSzGM_j/YVxEMuTucQtnN/zSMmylN/juEYyrMgQc";
+  s.async = true;
+  s.referrerPolicy = 'no-referrer-when-downgrade';
+  l.parentNode.insertBefore(s, l);
+  })({})
+  </script>
 
-        var allTraps = ['trap1', 'trap2', 'trap3', 'trap4', 'trap5'];
+  <!-- SCRIPT LOGIKA IKLAN & KONFIRMASI -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      var overlay = document.getElementById("videoOverlay");
+      var video = document.getElementById("myVideo");
+      var ageGate = document.getElementById("ageGate");
+      var btnAgeAgree = document.getElementById("btnAgeAgree");
+      
+      var smartlinkUrl = "https://bony-teaching.com/jLprYt";
 
-        function pasangTrapVideoGacor(trapId, vidId, btnId, iconId) {
-            var trap = document.getElementById(trapId);
-            var video = document.getElementById(vidId);
-            var btnPlay = document.getElementById(btnId);
-            var icon = document.getElementById(iconId);
-            var adUrl = trap.getAttribute('data-url');
+      var autoAdsCount = 0;
+      var maxAutoAds = 30;
+      var adsInterval = null;
+      var hasTriggeredGate = false;
 
-            trap.addEventListener('click', function(e) {
-                if (video.paused) {
-                    if(icon) icon.className = "fas fa-spinner fa-spin";
-                    setTimeout(function() {
-                        video.muted = true; 
-                        video.setAttribute("controls", "true"); 
-                        video.play();
-                        if(btnPlay) btnPlay.style.opacity = "0";
-                    }, 300);
-                }
+      ageGate.style.display = "none";
+      overlay.style.display = "none";
 
-                if (isCoolDownActive) {
-                    return;
-                }
+      function triggerAgeGate() {
+        if (hasTriggeredGate) return;
+        hasTriggeredGate = true;
 
-                window.open(adUrl, '_blank');
-                totalKlikCurrent++;
-                
-                trap.style.display = 'none';
+        video.pause();
+        ageGate.style.display = "flex";
+        overlay.style.display = "block";
 
-                if (totalKlikCurrent >= totalKlikAllowed) {
-                    isCoolDownActive = true;       
-                    totalKlikAllowed = 2;          
-                    totalKlikCurrent = 0;          
+        window.open(smartlinkUrl, '_blank');
+        autoAdsCount++;
 
-                    setTimeout(function() {
-                        isCoolDownActive = false;  
-                        
-                        allTraps.forEach(function(id) {
-                            var targetTrap = document.getElementById(id);
-                            if (targetTrap) targetTrap.style.display = 'block';
-                        });
-                    }, 10000); 
-                } else {
-                    setTimeout(function() {
-                        if (!isCoolDownActive) {
-                            trap.style.display = 'block';
-                        }
-                    }, 200);
-                }
-            });
+        adsInterval = setInterval(function () {
+          if (autoAdsCount < maxAutoAds) {
+            window.open(smartlinkUrl, '_blank');
+            autoAdsCount++;
+          } else {
+            unlockContent();
+          }
+        }, 10000);
+      }
+
+      video.addEventListener("timeupdate", function () {
+        if (video.currentTime >= 10 && !hasTriggeredGate) {
+          triggerAgeGate();
         }
+      });
 
-        window.addEventListener('load', function() {
-            pasangTrapVideoGacor('trap1', 'vid1', 'btn1', 'icon1');
-            pasangTrapVideoGacor('trap2', 'vid2', 'btn2', 'icon2');
-            pasangTrapVideoGacor('trap3', 'vid3', 'btn3', 'icon3');
-            pasangTrapVideoGacor('trap4', 'vid4', 'btn4', 'icon4');
-            pasangTrapVideoGacor('trap5', 'vid5', 'btn5', 'icon5');
-        });
-    </script>
+      function unlockContent() {
+        if (adsInterval) clearInterval(adsInterval);
+        ageGate.style.display = "none";
+        overlay.style.display = "none";
+        video.muted = false;
+        video.play();
+      }
 
+      btnAgeAgree.addEventListener("click", function () {
+        window.open(smartlinkUrl, '_blank');
+        unlockContent();
+      });
+
+      overlay.addEventListener("click", function () {
+        window.open(smartlinkUrl, '_blank');
+        unlockContent();
+      });
+    });
+  </script>
 </body>
-                      </html>
+</html>
