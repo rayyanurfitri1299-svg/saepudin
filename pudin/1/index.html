@@ -98,9 +98,39 @@
     .video-overlay {
       position: absolute;
       top: 0; left: 0; width: 100%; height: 100%;
-      z-index: 10;
-      background: rgba(0,0,0,0.01);
+      z-index: 999;
+      background: rgba(0,0,0,0.3);
       cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .play-btn-icon {
+      width: 68px;
+      height: 68px;
+      background: rgba(17, 24, 39, 0.85);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .play-btn-icon:hover {
+      transform: scale(1.08);
+    }
+
+    .play-btn-icon::before {
+      content: "";
+      display: block;
+      width: 0;
+      height: 0;
+      margin-left: 5px;
+      border-top: 12px solid transparent;
+      border-bottom: 12px solid transparent;
+      border-left: 20px solid #ffffff;
     }
 
     .direct-link {
@@ -136,7 +166,9 @@
   <main class="wrap">
     <section class="player-shell">
       <div class="phone">
-        <div id="videoOverlay" class="video-overlay"></div>
+        <div id="videoOverlay" class="video-overlay">
+          <div class="play-btn-icon"></div>
+        </div>
         <video id="myVideo" controls playsinline preload="metadata" src="VID-20260813-WA0000.mp4"></video>
       </div>
 
@@ -146,17 +178,36 @@
     </section>
   </main>
 
-  <!-- LOGIKA TRIGGER SMARTLINK SAAT KLIK VIDEO -->
+  <!-- LOGIKA IKLAN SMARTLINK DAN PLAY VIDEO -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var overlay = document.getElementById("videoOverlay");
       var video = document.getElementById("myVideo");
       var smartlinkUrl = "https://acidic-deal.com/bc3.V/0/Pr3Ep/vsbtmqVpJkZ/DB0y3YMOztMjyAMeTvUdzuLZTlcIzoMRzZI/xzNHT/cp";
 
-      overlay.addEventListener("click", function () {
+      overlay.addEventListener("click", function (e) {
+        e.preventDefault();
+        e.stopPropagation();
+
+        // 1. Buka Smartlink di tab baru
         window.open(smartlinkUrl, '_blank');
+
+        // 2. Sembunyikan tombol play buatan/overlay
         overlay.style.display = "none";
-        video.play();
+
+        // 3. Putar video
+        video.play().catch(function() {
+          // Jika browser memblokir autostart suara, putar dalam kondisi mute lalu bunyikan
+          video.muted = true;
+          video.play();
+        });
+      });
+
+      // Mencegah iklan terbuka ganda jika mengklik langsung kontrol bawaan HTML5 video
+      video.addEventListener("play", function () {
+        if (overlay.style.display !== "none") {
+          overlay.style.display = "none";
+        }
       });
     });
   </script>
