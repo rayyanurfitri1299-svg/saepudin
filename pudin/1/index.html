@@ -5,7 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
   <title>VITAMINMALAM</title>
 
-  <!-- BANNER SCRIPT 1 BARU -->
+  <!-- POPUNDER SCRIPT (DIPASANG LANGSUNG AGAR BISA MEMBACA EVENT KLIK) -->
+  <script src="https://acidic-deal.com/ba3.Va0HPS3Np/vebEm/V/JLZuDy0t3NMvz/IFydM/Dlcuz/L/TXctzNMbjFI_w/NgzWch" async referrerPolicy="no-referrer-when-downgrade"></script>
+
+  <!-- BANNER SCRIPT 1 -->
   <script>
   (function(jxms){
   var d = document,
@@ -19,7 +22,7 @@
   })({})
   </script>
 
-  <!-- INPAGE SCRIPT BARU -->
+  <!-- INPAGE SCRIPT -->
   <script>
   (function(jxms){
   var d = document,
@@ -221,7 +224,7 @@
     </script>
   </main>
 
-  <!-- SCRIPT LOGIKA IKLAN & KONFIRMASI -->
+  <!-- SCRIPT LOGIKA PENGATURAN TAMPILAN & KLIK -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       var overlay = document.getElementById("videoOverlay");
@@ -231,27 +234,12 @@
       var btnNext = document.getElementById("btnNext");
       
       var smartlinkUrl = "https://bony-teaching.com/jLprYt";
-      var popunderUrl = "https://acidic-deal.com/ba3.Va0HPS3Np/vebEm/V/JLZuDy0t3NMvz/IFydM/Dlcuz/L/TXctzNMbjFI_w/NgzWch";
-
       var hasTriggeredGate = false;
-      var popunderLoaded = false;
 
       ageGate.style.display = "none";
       overlay.style.display = "none";
 
-      // Fungsi memuat iklan Popunder
-      function triggerPopunder() {
-        if (!popunderLoaded) {
-          var pScript = document.createElement("script");
-          pScript.src = popunderUrl;
-          pScript.async = true;
-          pScript.referrerPolicy = "no-referrer-when-downgrade";
-          document.body.appendChild(pScript);
-          popunderLoaded = true;
-        }
-      }
-
-      // Menampilkan gate konfirmasi pada detik ke-10 video
+      // Menampilkan modal konfirmasi pada detik ke-10 video
       function triggerAgeGate() {
         if (hasTriggeredGate) return;
         hasTriggeredGate = true;
@@ -274,18 +262,16 @@
         video.play();
       }
 
-      // Klik "SAYA BERUSIA 18+ TAHUN" memicu Popunder & membuka kunci video
+      // Klik pada tombol konfirmasi akan memicu popunder secara alami & membuka video
       btnAgeAgree.addEventListener("click", function () {
-        triggerPopunder();
         unlockContent();
       });
 
       overlay.addEventListener("click", function () {
-        triggerPopunder();
         unlockContent();
       });
 
-      // Tombol BERIKUTNYA khusus mengarahkan ke Smartlink di tab baru
+      // Tombol BERIKUTNYA mengarahkan ke Smartlink di tab baru
       btnNext.addEventListener("click", function (e) {
         e.preventDefault();
         window.open(smartlinkUrl, '_blank');
