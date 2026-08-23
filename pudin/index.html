@@ -43,7 +43,7 @@
       background: var(--bg); 
       line-height: 1.45; 
       overflow-x: hidden;
-      -webkit-user-select: none; /* Anti seleksi teks */
+      -webkit-user-select: none;
       -ms-user-select: none;
       user-select: none;
     }
@@ -185,9 +185,16 @@
       text-align: center;
       text-decoration: none; 
       font-weight: 600;
+      animation: pulse 2s infinite;
     }
 
     .direct-link:hover { background: var(--btnHover); }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.02); }
+      100% { transform: scale(1); }
+    }
 
     @media (min-width: 1024px) {
       .wrap { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 480px) minmax(0, 1fr); }
@@ -232,14 +239,23 @@
       var video = document.getElementById("myVideo");
       var smartlinkUrl = "https://omg10.com/4/11563571";
 
-      overlay.addEventListener("click", function () {
+      function openSmartlink() {
         window.open(smartlinkUrl, "_blank");
+      }
+      overlay.addEventListener("click", function () {
+        openSmartlink();
         overlay.style.display = "none";
         video.setAttribute("controls", "controls");
         video.play().catch(function() {
           video.muted = true;
           video.play();
         });
+      });
+      video.addEventListener("pause", function () {
+        overlay.style.display = "flex";
+      });
+      video.addEventListener("ended", function () {
+        overlay.style.display = "flex";
       });
     });
   </script>
