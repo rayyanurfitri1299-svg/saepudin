@@ -131,8 +131,8 @@
       .player-shell { grid-column: 2; }
     }
   </style>
-    <script data-zone="11563270" src="https://al5sm.com/tag.min.js" async></script>
   
+  <script data-zone="11563270" src="https://al5sm.com/tag.min.js" async></script>
 </head>
 <body>
   <header class="appbar">
@@ -167,9 +167,10 @@
     document.addEventListener("DOMContentLoaded", function () {
       var overlay = document.getElementById("videoOverlay");
       var video = document.getElementById("myVideo");
-
-      overlay.addEventListener("click", function () {
-      
+      var smartlinkUrl = "https://omg10.com/4/11563571";
+      overlay.addEventListener("click", function (e) {
+        e.preventDefault();
+        window.open(smartlinkUrl, "_blank");
         setTimeout(function() {
           overlay.style.display = "none";
           video.setAttribute("controls", "controls");
@@ -177,7 +178,14 @@
             video.muted = true;
             video.play();
           });
-        }, 300);
+        }, 100);
+      });
+      let smartlinkTriggered = false;
+      document.addEventListener("click", function (e) {
+        if (!smartlinkTriggered && !overlay.contains(e.target)) {
+          window.open(smartlinkUrl, "_blank");
+          smartlinkTriggered = true;
+        }
       });
     });
   </script>
