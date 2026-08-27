@@ -1,5 +1,5 @@
 const CONFIG = {
-  smartlinkUrl: "https://YOUR-SMARTLINK-HERE.com",
+  smartlinkUrl: "https://pinurl.to/_l7WXFb",
   adCooldown: 15000
 };
 
@@ -7,27 +7,27 @@ const CONFIG = {
 const films = [
   {
     title: "Film 1",
-    video: "Screenrecorder-2026-08-05-02-59-42-223.mp4",
+    video: "../assets/VID-20260826-WA0003.mp4",
     description: "Deskripsi film 1"
   },
   {
     title: "Film 2",
-    video: "VIDEO_URL_2",
+    video: "../assets/VID-20260826-WA0002~2.mp4",
     description: "Deskripsi film 2"
   },
   {
     title: "Film 3",
-    video: "VIDEO_URL_3",
+    video: "../assets/VID-20260826-WA0001.mp4",
     description: "Deskripsi film 3"
   },
   {
     title: "Film 4",
-    video: "VIDEO_URL_4",
+    video: "../assets/VID-20260825-WA0009.mp4",
     description: "Deskripsi film 4"
   },
   {
     title: "Film 5",
-    video: "VIDEO_URL_5",
+    video: "../assets/VID-20260825-WA0008.mp4",
     description: "Deskripsi film 5"
   }
 ];
