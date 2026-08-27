@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <meta name="theme-color" content="#100d1b">
+  <meta name="description" content="Zeel.Flex - Website streaming film modern.">
+
+  <title>bee.hd - Streaming Video</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <main class="page-shell">
+
+    <header class="top-header">
+      <a href="#" class="brand" aria-label="Zeel.Flex home">
+        bee<span>.hd</span>
+      </a>
+
+      <button
+        id="nextBtn"
+        class="next-btn"
+        type="button"
+        aria-label="Putar film berikutnya"
+      >
+        next →
+      </button>
+    </header>
+
+    <section class="intro-card" aria-label="Informasi website">
+      <div class="new-badge" aria-hidden="true">NEW!</div>
+
+      <p>
+        Keterangan website...
+      </p>
+    </section>
+
+    <section class="stream-card" aria-label="Streaming player">
+
+      <div
+        id="playerWrap"
+        class="player-wrap"
+        tabindex="0"
+        aria-label="Video player"
+      >
+        <video
+          id="videoPlayer"
+          class="video-element"
+          preload="metadata"
+          playsinline
+          crossorigin="anonymous"
+        >
+          <source id="videoSource" src="YOUR_VIDEO_URL.mp4" type="video/mp4">
+          Browser Anda tidak mendukung pemutar video HTML5.
+        </video>
+
+        <div id="videoPlaceholder" class="video-placeholder">
+          <button
+            id="bigPlayBtn"
+            class="play-big"
+            type="button"
+            aria-label="Putar video"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M8 5.4v13.2c0 .8.9 1.3 1.6.9l10.2-6.6c.7-.5.7-1.4 0-1.8L9.6 4.5C8.9 4.1 8 4.6 8 5.4Z"></path>
+            </svg>
+          </button>
+        </div>
+
+        <div id="filmNowPlaying" class="film-now-playing">
+          Film 1
+        </div>
+
+        <div id="statusPill" class="status-pill" aria-live="polite">
+          Iklan siap
+        </div>
+
+        <button
+          id="centerPause"
+          class="center-pause"
+          type="button"
+          aria-label="Pause video"
+        >
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M7 5.5a1 1 0 0 1 1.5-.86l8.3 4.8a1 1 0 0 1 0 1.72l-8.3 4.8A1 1 0 0 1 7 15.1V5.5Z"></path>
+          </svg>
+        </button>
+
+        <div id="playerOverlay" class="player-overlay">
+          <div class="progress-area">
+            <div
+              id="progressTrack"
+              class="progress-track"
+              role="slider"
+              aria-label="Progress video"
+              aria-valuemin="0"
+              aria-valuemax="100"
+              aria-valuenow="0"
+              tabindex="0"
+            >
+              <div id="progressFill" class="progress-fill"></div>
+            </div>
+          </div>
+
+          <div class="control-row">
+
+            <button
+              id="playPauseBtn"
+              class="control-btn"
+              type="button"
+              aria-label="Putar video"
+            >
+              <svg id="playPauseIcon" viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M8 5.4v13.2c0 .8.9 1.3 1.6.9l10.2-6.6c.7-.5.7-1.4 0-1.8L9.6 4.5C8.9 4.1 8 4.6 8 5.4Z"></path>
+              </svg>
+            </button>
+
+            <div class="volume-wrap">
+              <button
+                id="muteBtn"
+                class="control-btn"
+                type="button"
+                aria-label="Matikan suara"
+              >
+                <svg id="volumeIcon" viewBox="0 0 24 24" aria-hidden="true">
+                  <path d="M4 9v6h4l5 4V5L8 9H4Zm12.5 1.1a1 1 0 0 0-1.4 1.4 2.1 2.1 0 0 1 0 3 1 1 0 0 0 1.4 1.4 4.1 4.1 0 0 0 0-5.8Zm2.2-2.2a1 1 0 0 0-1.4 1.4 5.2 5.2 0 0 1 0 7.4 1 1 0 1 0 1.4 1.4 7.2 7.2 0 0 0 0-10.2Z"></path>
+                </svg>
+              </button>
+
+              <input
+                id="volumeSlider"
+                class="volume-slider"
+                type="range"
+                min="0"
+                max="1"
+                step="0.01"
+                value="1"
+                aria-label="Volume"
+              >
+            </div>
+
+            <div id="timeLabel" class="time-label">
+              00:00 / 00:00
+            </div>
+
+            <button
+              id="fullscreenBtn"
+              class="control-btn"
+              type="button"
+              aria-label="Fullscreen"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M5 4a1 1 0 0 0-1 1v5h2V6h4V4H5Zm14 0h-5v2h4v4h2V5a1 1 0 0 0-1-1ZM4 14v5a1 1 0 0 0 1 1h5v-2H6v-4H4Zm14 0v4h-4v2h5a1 1 0 0 0 1-1v-5h-2Z"></path>
+              </svg>
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <section class="film-info" aria-label="Informasi film">
+
+        <div class="ribbon">
+          <div class="film-meta">
+            <span class="film-label">Deskripsi</span>
+            <p id="filmDescription" class="film-description">
+              deskripsi untuk per film...
+            </p>
+          </div>
+        </div>
+
+        <h2 id="filmTitleHeading" class="film-title-heading">
+          Film 1
+        </h2>
+
+        <div id="filmList" class="film-list" aria-label="Daftar film">
+          
+        </div>
+
+        <p id="adStatus" class="ad-note" aria-live="polite">
+          Interaksi pertama dapat membuka smartlink. Cooldown global: 15 detik.
+        </p>
+      </section>
+    </section>
+
+    <footer class="footer">
+      <h2 class="footer-title">Enjoy For watch.</h2>
+      <p class="copyright">©2026</p>
+    </footer>
+
+  </main>
+
+  <div id="toast" class="toast" role="status" aria-live="polite"></div>
+</body>
+</html>
